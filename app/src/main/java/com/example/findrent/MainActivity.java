@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView logo;
     TextView nomApp,slogan;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,14 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         anim1= AnimationUtils.loadAnimation(this,R.anim.anim1);
-
-        logo=findViewById(R.id.imageView);
-        nomApp=findViewById(R.id.textView);
-        slogan=findViewById(R.id.textView2);
-
-        logo.setAnimation(anim1);
-        slogan.setAnimation(anim1);
-        nomApp.setAnimation(anim1);
 
         new Handler().postDelayed(new Runnable() {
             @Override

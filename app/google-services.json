@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1097784055800",
+    "project_id": "quick-rent-4be0b",
+    "storage_bucket": "quick-rent-4be0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097784055800:android:b69d98576ede014eec680d",
+        "android_client_info": {
+          "package_name": "com.example.findrent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097784055800-gr8pb6fp6u2ar2cu8pe28ja4q2qk8d11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYy6GKyyzsFOZlGEr79JhGzzqRRLOM3L0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097784055800-gr8pb6fp6u2ar2cu8pe28ja4q2qk8d11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
