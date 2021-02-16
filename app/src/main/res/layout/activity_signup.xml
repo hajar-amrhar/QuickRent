@@ -32,7 +32,7 @@
             android:hint="nom d'utilisateur"
             app:boxBackgroundColor="@color/colprim"
             app:hintTextColor="@color/white"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
 
             >
 
@@ -53,7 +53,7 @@
             android:hint="adresse Email"
             app:boxBackgroundColor="@color/colprim"
             app:hintTextColor="@color/white"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
 
             >
 
@@ -74,7 +74,7 @@
             android:hint="numéro du téléphone"
             app:boxBackgroundColor="@color/colprim"
             app:hintTextColor="@color/white"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
 
             >
 
@@ -94,7 +94,7 @@
             android:hint="mot de passe"
             app:boxBackgroundColor="@color/colprim"
             app:hintTextColor="@color/white"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/black"
             >
@@ -116,7 +116,7 @@
             app:boxBackgroundColor="@color/colprim"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/black"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -134,7 +134,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
-            android:text="creer"
+            android:text="S'inscrire"
             android:layout_marginTop="30dp"
             android:background="@drawable/forme_button"
 
@@ -145,7 +145,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
-            android:text="vous avez dejà un compte"
+            android:text="vous avez dejà un compte ?"
             android:layout_marginTop="30dp"
             android:background="@drawable/forme_button"
 

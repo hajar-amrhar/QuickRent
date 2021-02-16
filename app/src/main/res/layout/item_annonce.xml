@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_flou">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="505dp"
+        android:background="@drawable/backg_annonce"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/dateAnnonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="jj/mm/aa"
+        android:textColor="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/desciption"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/dateAnnonce"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toEndOf="@+id/imageAnnonce"
+        app:layout_constraintTop_toBottomOf="@+id/desciption"
+        app:layout_constraintVertical_bias="0.689" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageAnnonce"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:src="@drawable/bedroom2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:strokeColor="@color/prix_col"
+        app:strokeWidth="5dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/prix_forme"
+        app:layout_constraintBottom_toBottomOf="@+id/imageAnnonce"
+        app:layout_constraintEnd_toEndOf="@+id/imageAnnonce"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/prixAnnonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1500dh"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        android:textSize="12dp"/>
+
+    <TextView
+        android:id="@+id/titreAnnonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="12dp"
+        android:text="Chambre 4éme étage "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/imageAnnonce"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/adresseAnnonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:text="Sidi Maarouf à Casablanca"
+        android:textColor="@color/teal_700"
+        android:textSize="10dp"
+        app:layout_constraintStart_toEndOf="@+id/imageAnnonce"
+        app:layout_constraintTop_toBottomOf="@+id/titreAnnonce" />
+
+    <TextView
+        android:id="@+id/desciption"
+        android:layout_width="187dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:text="une chambre seulement pour une fille qui doit avoir une fonction stable et sérieuse,la chambre se trouve …"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toEndOf="@+id/imageAnnonce"
+        app:layout_constraintTop_toBottomOf="@+id/adresseAnnonce" />
+
+    <ImageView
+        android:id="@+id/likeAnnonce"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_fv2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toEndOf="@+id/titreAnnonce"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:tint="@color/fav" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

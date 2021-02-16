@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+        <item android:title="filtrer par">
+
+        <menu>
     <item
         android:id="@+id/filter1"
-        android:title=""
+        android:title="date"
 
 
         />
     <item
         android:id="@+id/nav_filter"
-        android:title=""
+        android:title="plus populaire"
 
         />
+        </menu>
+
+        </item>
+
 </menu>
