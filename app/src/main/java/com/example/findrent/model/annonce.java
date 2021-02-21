@@ -2,9 +2,14 @@ package com.example.findrent.model;
 
 import android.widget.ImageView;
 
+import java.util.HashMap;
+
 //ajouter annonce
 public class annonce {
 
+    public boolean like;
+    public int starCount;
+    public HashMap<Object, Object> stars;
     private String description, adresse, superficie, prix, ameublement, titre, date, log, alt, uri1, uuri2, uri3, uri4,annonceid;
 
 
