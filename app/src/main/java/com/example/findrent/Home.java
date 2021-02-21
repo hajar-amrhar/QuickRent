@@ -36,9 +36,13 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         botNav= findViewById(R.id.butt_navigation);
         botNav.setOnNavigationItemSelectedListener(navListener);
-        if (selectedFragment != null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_container,new homeFragment()).commit();
+
+        if (selectedFragment == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new homeFragment()).commit();
         }
+
+
+
         /*
 
         app = findViewById(R.id.chipApp);
@@ -115,28 +119,35 @@ public class Home extends AppCompatActivity {
                             break;
 
                         case R.id.nav_filter:
-                            selectedFragment= new filterFragment();
+
+                            // selectedFragment= new filterFragment();
                             break;
 
                         case R.id.nav_add:
+                            //getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new addFragment()).commit();
+
+                            selectedFragment= new addFragment();
+
                             // start activity add
                         break;
 
                         case R.id.nav_favorite:
-                            selectedFragment= new favFragment();
+                            //selectedFragment= new favFragment();
                             break;
 
                         case R.id.nav_profile:
 
-                            SharedPreferences.Editor editor = getSharedPreferences("PREFS",MODE_PRIVATE).edit();
+                           /* SharedPreferences.Editor editor = getSharedPreferences("PREFS",MODE_PRIVATE).edit();
                             editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                             editor.apply();
                             selectedFragment=new profileFragment();
                             break;
+
+                            */
                 }
 
                 if (selectedFragment != null){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_container,selectedFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,selectedFragment).commit();
                 }
                     return true;
                 }

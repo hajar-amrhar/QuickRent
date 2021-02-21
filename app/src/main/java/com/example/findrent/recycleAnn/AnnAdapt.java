@@ -33,9 +33,12 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
 
     private FirebaseUser firebaseUser;
 
-    public AnnAdapt(List<annonce> mdata) {
+    public AnnAdapt(Context mContext,List<annonce> mdata) {
         this.mdata = mdata;
+        this.mContext = mContext;
+
     }
+
 
     @NonNull
     @Override
@@ -51,10 +54,13 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull AnnonceViewHolder holder, int position) {
 
+        //recupere les dennées de l'annonce du database et les mettre dans l'item_annonce
+
+
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         annonce annonce=mdata.get(1);
 
-        Glide.with(mContext).load(annonce.getAnnonceImage()).into(holder.imAnn);
+        Glide.with(mContext).load(annonce.getUri1()).into(holder.imAnn);
 
         if (annonce.getDescription().equals("")){
             holder.desc.setVisibility(View.GONE);
@@ -62,7 +68,6 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
           holder.desc.setVisibility(View.VISIBLE);
             holder.desc.setText(annonce.getDescription());
         }
-
         holder.titre.setVisibility(View.VISIBLE);
         holder.titre.setText(annonce.getTitre());
 
@@ -74,6 +79,8 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
 
         holder.adresse.setVisibility(View.VISIBLE);
         holder.adresse.setText(annonce.getAdresse());
+
+
 
 
        // publisher(holder.pdp,holder.username,annonce.getAnnonceid); //???
@@ -92,6 +99,7 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
     public class AnnonceViewHolder extends RecyclerView.ViewHolder {
 
 
+
         //annonce sur home
         ImageView imfav,imAnn,pdp;
         TextView titre, desc,adresse, prix,date;
@@ -99,6 +107,9 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
         
         public AnnonceViewHolder(@NonNull View itemView) {
             super(itemView);
+
+
+            // recupere les id des elements de l'item_annonce
 
             //pdp=itemView.findViewById(R.id.pdp);// a ajouter à l'annonce
             imAnn=itemView.findViewById(R.id.imageAnnonce);
@@ -136,4 +147,6 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
             }
         });
     }*/
+
+
 }

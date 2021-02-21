@@ -5,78 +5,40 @@ import android.widget.ImageView;
 //ajouter annonce
 public class annonce {
 
-    private String description, adresse, superficie,prix, ameublement, titre,date,pdp,user_name;
-    private ImageView AnnonceImage ;
+    private String description, adresse, superficie, prix, ameublement, titre, date, log, alt, uri1, uuri2, uri3, uri4,annonceid;
 
 
-    public annonce() {
-
-    }
-
-
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getPdp() {
-        return pdp;
-    }
-
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public void setPdp(String pdp) {
-        this.pdp = pdp;
-    }
-
-    public ImageView getAnnonceImage() {
-        return AnnonceImage;
-    }
-
-    public void setAnnonceImage(ImageView annonceImage) {
-        AnnonceImage = annonceImage;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getAmeublement() {
-        return ameublement;
-    }
-
-    public void setAmeublement(String ameublement) {
-        this.ameublement = ameublement;
-    }
-
-    public String getPrix() {
-        return prix;
-    }
-
-    public void setPrix(String prix) {
+    public annonce(String description, String adresse, String superficie, String prix, String ameublement, String titre, String date, String log, String alt, String uri1, String uuri2, String uri3, String uri4,String annonceid) {
+        this.description = description;
+        this.adresse = adresse;
+        this.superficie = superficie;
         this.prix = prix;
+        this.ameublement = ameublement;
+        this.titre = titre;
+        this.date = date;
+        this.log = log;
+        this.alt = alt;
+        this.uri1 = uri1;
+        this.uuri2 = uuri2;
+        this.uri3 = uri3;
+        this.uri4 = uri4;
+        this.annonceid = annonceid;
     }
 
-    public String getSuperficie() {
-        return superficie;
+    public String getPublisher() {
+        return annonceid;
     }
 
-    public void setSuperficie(String superfice) {
-        this.superficie = superfice;
+    public void setPublisher(String publisher) {
+        this.annonceid = publisher;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getAdresse() {
@@ -87,11 +49,91 @@ public class annonce {
         this.adresse = adresse;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSuperficie() {
+        return superficie;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSuperficie(String superficie) {
+        this.superficie = superficie;
+    }
+
+    public String getPrix() {
+        return prix;
+    }
+
+    public void setPrix(String prix) {
+        this.prix = prix;
+    }
+
+    public String getAmeublement() {
+        return ameublement;
+    }
+
+    public void setAmeublement(String ameublement) {
+        this.ameublement = ameublement;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLog() {
+        return log;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
+    public String getUri1() {
+        return uri1;
+    }
+
+    public void setUri1(String uri1) {
+        this.uri1 = uri1;
+    }
+
+    public String getUuri2() {
+        return uuri2;
+    }
+
+    public void setUuri2(String uuri2) {
+        this.uuri2 = uuri2;
+    }
+
+    public String getUri3() {
+        return uri3;
+    }
+
+    public void setUri3(String uri3) {
+        this.uri3 = uri3;
+    }
+
+    public String getUri4() {
+        return uri4;
+    }
+
+    public void setUri4(String uri4) {
+        this.uri4 = uri4;
     }
 }
