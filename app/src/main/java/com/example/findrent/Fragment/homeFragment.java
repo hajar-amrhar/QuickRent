@@ -11,11 +11,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.Toast;
+import android.widget.SearchView;
 
-import com.example.findrent.Home;
 import com.example.findrent.R;
 import com.example.findrent.model.annonce;
 import com.example.findrent.recycleAnn.AnnAdapt;
@@ -42,7 +43,10 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
     ImageView botTri;
     Chip app, chambre, garc, duplexe, maison, loccom;
+        SearchView mySearchView;
+        ListView myList;
 
+        ArrayAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,10 +70,32 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
 
 
+        //searchview
+        mySearchView = v.findViewById (R.id.mySearchView);
+        myList = v.findViewById(R.id.myList);
+        ArrayList<String> list= new ArrayList<String> ();
+        list.add("Monday");
+        list.add("tuesday");
+        list.add("wednesday");
+        list.add("thrsday");
+        list.add("friday");
+        list.add("saturday");
+        list.add("sunday");
 
+    adapter = new ArrayAdapter<String> (getActivity (), android.R.layout.simple_list_item_1, list);
+    myList.setAdapter (adapter);
+    mySearchView.setOnQueryTextListener (new SearchView.OnQueryTextListener () {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
 
-
-
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            adapter.getFilter ().filter (newText);
+            return false;
+        }
+    });
 
         app = v.findViewById(R.id.chipApp);
         garc = v.findViewById(R.id.chipGarc);
@@ -95,6 +121,8 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
 
     }
+
+
 
     private void readAnnonce(){
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Annonce");
