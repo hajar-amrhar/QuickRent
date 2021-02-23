@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.contacterFragment"
+    android:background="@drawable/background_flou">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="COORDONEES"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="419dp"
+        android:layout_height="297dp"
+        android:layout_marginBottom="156dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_marginLeft="22dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginVertical="10dp"
+            android:text="Numéro Du Téléphone"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="510dp"
+
+            />
+
+        <TextView
+            android:id="@+id/phnC"
+            android:layout_width="385dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/forme_recherche"
+            android:text="076576576575"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="580dp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginLeft="25dp"
+            android:layout_marginVertical="10dp"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="580dp" />
+
+        <TextView
+            android:id="@+id/emailC"
+            android:layout_width="381dp"
+            android:layout_marginVertical="10dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:background="@drawable/forme_recherche"
+            android:text="email.gmail.com"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="580dp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

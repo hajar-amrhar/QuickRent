@@ -13,6 +13,8 @@
         android:fitsSystemWindows="true"
 
 
+        android:backgroundTint="@color/colprim"
+
         app:contentScrim="?attr/colorOnPrimary">
 
 

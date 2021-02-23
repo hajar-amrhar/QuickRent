@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.findrent.Home;
 import com.example.findrent.R;
 import com.example.findrent.model.User;
@@ -42,6 +44,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -58,6 +61,7 @@ public class addFragment extends Fragment {
  //   private DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference("Annonce");
 
     Fragment selectedFragment;
+    public Context mContext;
 
 
     FusedLocationProviderClient client;
@@ -67,7 +71,7 @@ public class addFragment extends Fragment {
     String titreS, descriptionS,dateS,prixS,superficieS,logS,altS,adressS,categoryS="";
     String ameublement="0";
     Button suivant ;
-    ImageView annonceImage, annoncImage2, annonceImage3, annonceImage4;
+    ImageView annonceImage, annonceImage2, annonceImage3, annonceImage4;
     TextView date;
     ImageView  getlocation;
     String log,at;
@@ -117,7 +121,7 @@ public class addFragment extends Fragment {
         loccom = v.findViewById(R.id.chipLocCom2);
 
         annonceImage= v.findViewById(R.id.imann1);
-        annoncImage2= v.findViewById(R.id.imann2);
+        annonceImage2= v.findViewById(R.id.imann2);
         annonceImage3 = v.findViewById(R.id.imann3);
         annonceImage4 = v.findViewById(R.id.imann4);
 
@@ -153,17 +157,26 @@ public class addFragment extends Fragment {
         adressS=adresse.toString();
 
 
+        //placer les image prises par la cam via realtimeDataBase dans addAnnonce
+
+
+
+
+        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri1")).into(annonceImage);
+
+        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri2")).into(annonceImage2);
+
+        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri3")).into(annonceImage3);
+
+        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri4")).into(annonceImage4);
+        // Glide.with(mContext).load(annonce.getUri1()).into(holder.annonceImage);
+
+        // supprimer les uri de users-->currentUserId-->photoUri
 
 
 
         return v;
     }
-
-
-
-
-
-
 
     private void readUri(){
         DatabaseReference reference=  FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri");
@@ -201,8 +214,8 @@ public class addFragment extends Fragment {
 
 
 
-    public void writeNewUser(String description, String adresse, String superficie, String prix, String ameublement, String titre, String date, String log, String alt, String uri1, String uri2, String uri3, String uri4,String userid) {
-        annonce aAnnonce = new annonce(description,adresse, superficie, prix, ameublement, titre, date, log, alt, uri1,uri2,uri3,uri4,userid);
+    public void writeNewUser(String description, String adresse, String superficie, String prix, String ameublement, String titre, String date, String log, String alt, String uri1, String uri2, String uri3, String uri4,String userid,String category) {
+        annonce aAnnonce = new annonce(description,adresse, superficie, prix, ameublement, titre, date, log, alt, uri1,uri2,uri3,uri4,userid,category);
 
         //mDatabase.child("Annonce").child(mDatabase.push().getKey()).setValue(annonce);
 
@@ -302,13 +315,20 @@ public class addFragment extends Fragment {
 
                 readUri();
 
-              writeNewUser(descriptionS, adressS, superficieS, prixS, ameublement, titreS, currentDate, logS, altS,uri1,uri2,uri3,uri4,user.getUid());
+              writeNewUser(descriptionS, adressS, superficieS, prixS, ameublement, titreS, currentDate, logS, altS,uri1,uri2,uri3,uri4,user.getUid(),categoryS);
 
 
               // demarrer frag vos annonce
 
               //tasks ???????
                 Toast.makeText(getActivity(), "ajout vc succ", Toast.LENGTH_SHORT).show();
+
+                // supprimer les uri de users-->currentUserId-->photoUri par passer null à setValue
+
+                FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").setValue(null);
+
+
+
 
                 selectedFragment= new vosAnnoncesFragment();
 

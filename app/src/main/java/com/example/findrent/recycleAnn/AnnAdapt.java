@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.findrent.Fragment.homeFragment;
 import com.example.findrent.R;
 import com.example.findrent.model.User;
 import com.example.findrent.model.annonce;
@@ -30,15 +31,16 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
 
     public List<annonce> mdata;
     public Context mContext;
+    annonceCallback callback;
 
     private FirebaseUser firebaseUser;
 
-    public AnnAdapt(Context mContext,List<annonce> mdata) {
+
+    public AnnAdapt(List<annonce> mdata, Context mContext, annonceCallback callback) {
         this.mdata = mdata;
         this.mContext = mContext;
-
+        this.callback = callback;
     }
-
 
     @NonNull
     @Override
@@ -62,6 +64,7 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
 
         Glide.with(mContext).load(annonce.getUri1()).into(holder.imAnn);
 
+
         if (annonce.getDescription().equals("")){
             holder.desc.setVisibility(View.GONE);
         }else{
@@ -79,6 +82,15 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
 
         holder.adresse.setVisibility(View.VISIBLE);
         holder.adresse.setText(annonce.getAdresse());
+
+        holder.category.setVisibility(View.VISIBLE);
+        holder.category.setText(annonce.getCategoeie());
+
+        holder.superficie.setVisibility(View.VISIBLE);
+        holder.superficie.setText(annonce.getSuperficie());
+
+        holder.ameublement.setVisibility(View.VISIBLE);
+        holder.ameublement.setText(annonce.getAmeublement());
 
 
 
@@ -101,8 +113,8 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
 
 
         //annonce sur home
-        ImageView imfav,imAnn,pdp;
-        TextView titre, desc,adresse, prix,date;
+        ImageView imfav,imAnn,pdp,imann2,imann3,imann4;
+        TextView titre, desc,adresse, prix,date, superficie,category,ameublement;
         RatingBar ratingBar;
         
         public AnnonceViewHolder(@NonNull View itemView) {
@@ -113,6 +125,12 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
 
             //pdp=itemView.findViewById(R.id.pdp);// a ajouter à l'annonce
             imAnn=itemView.findViewById(R.id.imageAnnonce);
+
+
+
+
+
+
             titre=itemView.findViewById(R.id.titreAnnonce);
             desc=itemView.findViewById(R.id.desciption);
 
@@ -122,6 +140,18 @@ public class AnnAdapt extends RecyclerView.Adapter<AnnAdapt.AnnonceViewHolder>{
             imfav=itemView.findViewById(R.id.imageView2);
             prix=itemView.findViewById(R.id.prixAnnonce);
             date=itemView.findViewById(R.id.dateAnnonce);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    callback.onAnnonceItemClick(getAdapterPosition(),imAnn,titre,
+                            desc,adresse,date,prix);
+
+
+
+                }
+            });
 
         }
     }

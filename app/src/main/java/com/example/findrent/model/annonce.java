@@ -2,13 +2,15 @@ package com.example.findrent.model;
 
 import android.widget.ImageView;
 
+import java.io.Serializable;
+
 //ajouter annonce
-public class annonce {
+public class annonce implements Serializable {
+    // l'interface srialisable est pour envoyer les annonces vers une autre activité
+    private String description, adresse, superficie, prix, ameublement,categoeie, titre, date, log, alt, uri1, uuri2, uri3, uri4,annonceid;
 
-    private String description, adresse, superficie, prix, ameublement, titre, date, log, alt, uri1, uuri2, uri3, uri4,annonceid;
 
-
-    public annonce(String description, String adresse, String superficie, String prix, String ameublement, String titre, String date, String log, String alt, String uri1, String uuri2, String uri3, String uri4,String annonceid) {
+    public annonce(String description, String adresse, String superficie, String prix, String ameublement, String titre, String date, String log, String alt, String uri1, String uuri2, String uri3, String uri4,String annonceid,String categorie) {
         this.description = description;
         this.adresse = adresse;
         this.superficie = superficie;
@@ -22,6 +24,23 @@ public class annonce {
         this.uuri2 = uuri2;
         this.uri3 = uri3;
         this.uri4 = uri4;
+        this.annonceid = annonceid;
+        this.categoeie=categorie;
+    }
+
+    public String getCategoeie() {
+        return categoeie;
+    }
+
+    public void setCategoeie(String categoeie) {
+        this.categoeie = categoeie;
+    }
+
+    public String getAnnonceid() {
+        return annonceid;
+    }
+
+    public void setAnnonceid(String annonceid) {
         this.annonceid = annonceid;
     }
 

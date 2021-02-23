@@ -1,9 +1,12 @@
 package com.example.findrent.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,12 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.findrent.Home;
 import com.example.findrent.R;
 import com.example.findrent.model.annonce;
 import com.example.findrent.recycleAnn.AnnAdapt;
+import com.example.findrent.recycleAnn.annonceCallback;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,8 +33,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import androidx.core.util.Pair;
 
-public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener {
+public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener, annonceCallback {
 
 
     private RecyclerView recyclerViewHome;
@@ -61,7 +67,7 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         linearLayoutManager.setStackFromEnd(true);
         recyclerViewHome.setLayoutManager(linearLayoutManager);
         annoncelist=new ArrayList<>();
-        annadpter=new AnnAdapt(getContext(),annoncelist);
+        annadpter=new AnnAdapt(annoncelist, getContext(),this);
         recyclerViewHome.setAdapter(annadpter);
 
 
@@ -183,5 +189,67 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
             default:
                 return false;
         }
+    }
+
+    @Override
+    public void onAnnonceItemClick(int pos, ImageView imaannonce,
+                                   TextView titleann, TextView descriptionann,
+                                   TextView adresseann, TextView dateann,
+                                    TextView prixann) {
+
+
+        //creer bundle et envoyer l'objet annonce verd annonceDetals
+
+
+
+
+
+
+        /*
+        Intent intent = new Intent (getActivity(),DetailsFragment.class);
+        intent.putExtra("annonceObject",annoncelist.get(pos));
+
+         */
+
+        //shared animation setup
+
+
+/*
+
+        Pair<View, String>p1 = Pair.create((View)imaannonce,"annTN1");
+        Pair<View, String>p2 = Pair.create((View)titleann,"titreTN");
+        Pair<View, String>p3 = Pair.create((View)descriptionann,"descriptionTN");
+        Pair<View, String>p4 = Pair.create((View)adresseann,"adresseTN");
+        Pair<View, String>p5 = Pair.create((View)dateann,"dateTN");
+        Pair<View, String>p7 = Pair.create((View)prixann,"prixTN");
+
+
+        ;
+
+        ActivityOptionsCompat optionsCompat
+                =ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),p1,p2,p3,p4,p5,p7);
+
+
+
+ */
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new homeFragment())
+                .addSharedElement(imaannonce,"annTN1")
+                .addSharedElement(titleann,"titreTN")
+                .addSharedElement(descriptionann,"descriptionTN")
+                .addSharedElement(adresseann,"adresseTN")
+                .addSharedElement(dateann,"dateTN")
+                .addSharedElement(prixann,"prixTN")
+                .commit()
+        ;
+
+        DetailsFragment fragmentD = new DetailsFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("annonceObject",annoncelist.get(pos));
+
+        fragmentD.setArguments(bundle);
+
+        //startActivity(intent,optionsCompat.toBundle());
+
     }
 }
