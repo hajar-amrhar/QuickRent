@@ -25,7 +25,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/todo" />
 
 
     <TextView
@@ -35,7 +36,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="jj/mm/aa"
+        android:text="@string/jj_mm_aa"
         android:textColor="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
@@ -80,19 +81,20 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/prixAnnonce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1500dh"
+        android:text="@string/_1500dh"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        android:textSize="12dp"/>
+        android:textSize="12sp"/>
 
     <TextView
         android:id="@+id/titreAnnonce"
@@ -102,7 +104,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="12dp"
-        android:text="Chambre 4éme étage "
+        android:text="@string/chambre_4_me_tage"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/imageAnnonce"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -114,9 +116,9 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="8dp"
-        android:text="Sidi Maarouf à Casablanca"
+        android:text="@string/sidi_maarouf_casablanca"
         android:textColor="@color/teal_700"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageAnnonce"
         app:layout_constraintTop_toBottomOf="@+id/titreAnnonce" />
 
@@ -125,8 +127,8 @@
         android:layout_width="187dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:text="une chambre seulement pour une fille qui doit avoir une fonction stable et sérieuse,la chambre se trouve …"
-        android:textSize="12dp"
+        android:text="@string/une_chambre_seulement_pour_une_fille_qui_doit_avoir_une_fonction_stable_et_s_rieuse_la_chambre_se_trouve"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toEndOf="@+id/imageAnnonce"
@@ -142,7 +144,8 @@
         app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toEndOf="@+id/titreAnnonce"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:tint="@color/fav" />
+        app:tint="@color/fav"
+        android:contentDescription="@string/todo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

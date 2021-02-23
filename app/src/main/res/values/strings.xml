@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FindRent</string>
+    <string name="app_name">QuickRent</string>
     <string name="title_activity_forget_password">forgetPassword</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -11,4 +11,12 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chambre_4_me_tage">Chambre 4éme étage</string>
+    <string name="_1500dh">1500dh</string>
+    <string name="une_chambre_seulement_pour_une_fille_qui_doit_avoir_une_fonction_stable_et_s_rieuse_la_chambre_se_trouve">une chambre seulement pour une fille qui doit avoir une fonction stable et sérieuse,la chambre se trouve …</string>
+    <string name="sidi_maarouf_casablanca">Sidi Maarouf à Casablanca</string>
+    <string name="jj_mm_aa">jj/mm/aa</string>
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="todo3">TODO</string>
 </resources>
