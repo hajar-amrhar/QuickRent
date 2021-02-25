@@ -41,6 +41,7 @@ public class favFragment extends Fragment {
         });
         return v;
     }
+    /*
 
     private void onStarClicked(DatabaseReference favoriteRef){
         favoriteRef .runTransaction(new Transaction.Handler () {
@@ -105,5 +106,9 @@ public class favFragment extends Fragment {
         });
        }
 
+
+     */
     }
+
+
 

@@ -19,4 +19,8 @@
     <string name="todo">TODO</string>
     <string name="todo2">TODO</string>
     <string name="todo3">TODO</string>
+
+    <string name="prendre_une_photo">prendre une photo</string>
+    <string name="ajouter_de_la_galerie">ajouter de la galerie</string>
+    <string name="suivant">Suivant</string>
 </resources>

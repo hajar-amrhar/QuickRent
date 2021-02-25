@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class login extends AppCompatActivity implements View.OnClickListener {
 
+    //ProgressBar PB;
     private static final int RC_SIGN_IN = 111;
     private static final String TAG = "tag";
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -131,6 +133,8 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
 
     private void signIn() {
+        //PB.setVisibility(View.INVISIBLE);
+
         // afficher le compte google existant
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -195,6 +199,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
     private void loginAuth() {
 
+
         eml=regEml.getEditText().getText().toString();
         pswrd=regPswrd.getEditText().getText().toString();
 
@@ -223,6 +228,8 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         mAuth.signInWithEmailAndPassword(eml,pswrd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+//                PB.setVisibility(View.INVISIBLE);
+
 
                 if (task.isSuccessful()){
                     FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();

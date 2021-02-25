@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
     android:background="@drawable/background_flou"
-    android:fitsSystemWindows="true"
-    android:orientation="horizontal">
-<SearchView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:queryHint="Search here"
-        android:iconifiedByDefault="false"/>
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="10dp"
-            android:id="@+id/myList"/>
+    android:fitsSystemWindows="true">
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/home_espace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/butt_navigation"
+            android:layout_marginBottom="2dp">	>
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/butt_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/invisible"
+            app:itemIconTint="@color/col_col"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bott_nav"/>
+</RelativeLayout>
 
 
 

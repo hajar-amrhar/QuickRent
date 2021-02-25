@@ -30,6 +30,7 @@ public class Home extends AppCompatActivity {
     ImageView botTri;
    // Chip app, chambre, garc,duplexe,maison,loccom;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class Home extends AppCompatActivity {
         if (selectedFragment == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new homeFragment()).commit();
         }
+
 
 
 
@@ -126,13 +128,22 @@ public class Home extends AppCompatActivity {
                         case R.id.nav_add:
                             //getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new addFragment()).commit();
 
-                            selectedFragment= new addFragment();
+
+                            Intent intent = new Intent(Home.this, CamGaler.class);
+                            startActivity(intent);
+
+                            //selectedFragment= new addFragment();
+                            //startActivity(intent);
 
                             // start activity add
                         break;
 
                         case R.id.nav_favorite:
+
                             //selectedFragment= new favFragment();
+
+
+
                             break;
 
                         case R.id.nav_profile:

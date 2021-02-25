@@ -93,6 +93,10 @@ public class addFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_add, container, false);
 
+      /*
+
+
+
         //mDatabase = FirebaseDatabase.getInstance().getReference();
 
         //initialiser localisation clien
@@ -162,24 +166,27 @@ public class addFragment extends Fragment {
 
 
 
-        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri1")).into(annonceImage);
+        Glide.with(getActivity()).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri1")).into(annonceImage);
 
-        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri2")).into(annonceImage2);
+        Glide.with(getActivity()).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri2")).into(annonceImage2);
 
-        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri3")).into(annonceImage3);
+        Glide.with(getActivity()).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri3")).into(annonceImage3);
 
-        Glide.with(mContext).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").child("uri4")).into(annonceImage4);
+        Glide.with(getActivity()).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri4")).into(annonceImage4);
         // Glide.with(mContext).load(annonce.getUri1()).into(holder.annonceImage);
 
         // supprimer les uri de users-->currentUserId-->photoUri
 
 
 
+
+       */
         return v;
     }
 
+    /*
     private void readUri(){
-        DatabaseReference reference=  FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri");
+        DatabaseReference reference=  FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst");
 
         reference.addValueEventListener(new ValueEventListener(){
 
@@ -298,7 +305,7 @@ public class addFragment extends Fragment {
                 Toast.makeText(getActivity(), "champs obligatoir5", Toast.LENGTH_SHORT).show();
             }
 
-            */
+
             else if(superficieS.isEmpty()){
                 Toast.makeText(getActivity(), "champs obligatoir6", Toast.LENGTH_SHORT).show();
             }
@@ -325,7 +332,7 @@ public class addFragment extends Fragment {
 
                 // supprimer les uri de users-->currentUserId-->photoUri par passer null à setValue
 
-                FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("photoUri").setValue(null);
+                FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").setValue(null);
 
 
 
@@ -441,6 +448,8 @@ public class addFragment extends Fragment {
                 startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         }
+
+     */
     }
 
 

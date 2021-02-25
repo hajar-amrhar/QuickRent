@@ -102,7 +102,7 @@
                 android:layout_marginTop="10dp">
                 <TextView
                     android:transitionName="dateTN"
-                    android:id="@+id/dateAnnonce2"
+                    android:id="@+id/dateAnnonce4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
@@ -137,8 +137,7 @@
 
             <TextView
                 android:transitionName="titreTN"
-
-                android:id="@+id/titre"
+                android:id="@+id/titre4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Titre de l'annonce "
@@ -155,7 +154,7 @@
 
             <TextView
                 android:transitionName="adresseTN"
-                android:id="@+id/adresse"
+                android:id="@+id/adresse4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="adresse de l'annonce "
@@ -173,7 +172,7 @@
 
             <TextView
                 android:transitionName="descriptionTN"
-                android:id="@+id/description"
+                android:id="@+id/description5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="description de l'annonce "
@@ -320,10 +319,10 @@
                 android:layout_marginBottom="20dp"
                 />
 
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

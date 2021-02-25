@@ -123,7 +123,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){ // l'utilisateur enregistré avec succes ?
-                    data Data =new data(nm,phn,eml,pswrd);
+                    data Data =new data(nm,phn,pswrd,eml);
                     //si oui envoyer les don"es vers database
 
                     DatabaseReference condit=myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid());

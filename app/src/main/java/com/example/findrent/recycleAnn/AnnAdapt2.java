@@ -19,7 +19,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class AnnAdapt2 extends RecyclerView.Adapter<AnnAdapt2.AnnonceViewHolder>{
+public class AnnAdapt2{ }
+
+ /*extends RecyclerView.Adapter<AnnAdapt2.AnnonceViewHolder>{
 
 
     public List<annonce> mdata;
@@ -104,3 +106,6 @@ public class AnnAdapt2 extends RecyclerView.Adapter<AnnAdapt2.AnnonceViewHolder>
         }
     }
 }
+
+
+  */

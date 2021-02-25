@@ -1,12 +1,9 @@
 package com.example.findrent.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,10 +16,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.findrent.Home;
 import com.example.findrent.R;
 import com.example.findrent.model.annonce;
-import com.example.findrent.recycleAnn.AnnAdapt;
+import com.example.findrent.recycleAnn.AnnonceAdapter;
 import com.example.findrent.recycleAnn.annonceCallback;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.database.DataSnapshot;
@@ -33,15 +29,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import androidx.core.util.Pair;
 
 public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener, annonceCallback {
 
 
     private RecyclerView recyclerViewHome;
-    private AnnAdapt annadpter;
+    private AnnonceAdapter annadpter;
     private List<annonce> annoncelist;
-    //private List<String> followingList;
 
 
 
@@ -67,15 +61,8 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         linearLayoutManager.setStackFromEnd(true);
         recyclerViewHome.setLayoutManager(linearLayoutManager);
         annoncelist=new ArrayList<>();
-        annadpter=new AnnAdapt(annoncelist, getContext(),this);
+        annadpter=new AnnonceAdapter(annoncelist,getContext(),this);
         recyclerViewHome.setAdapter(annadpter);
-
-
-
-
-
-
-
 
         app = v.findViewById(R.id.chipApp);
         garc = v.findViewById(R.id.chipGarc);
@@ -103,20 +90,40 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     }
 
     private void readAnnonce(){
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Annonce");
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
         reference.addValueEventListener(new ValueEventListener(){
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 annoncelist.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    annonce Annonce=snapshot.getValue(annonce.class);
-                    annoncelist.add(Annonce );
+                annonce Annonce= snapshot.getValue(annonce.class);
+
+                    /*annoncelist.add(new annonce(snapshot.child("description").getValue(String.class),snapshot.child("adresse").getValue(String.class),
+                            snapshot.child("superficie").getValue(String.class),snapshot.child("prix").getValue(String.class),snapshot.child("ameublement").getValue(String.class),snapshot.child("titre").getValue(String.class),
+                            snapshot.child("date").getValue(String.class),snapshot.child("log").getValue(String.class),snapshot.child("alt").getValue(String.class),snapshot.child("uri1").getValue(String.class),
+                            snapshot.child("uri2").getValue(String.class),snapshot.child("uri3").getValue(String.class),snapshot.child("uri4").getValue(String.class),snapshot.child("annonceid").getValue(String.class),snapshot.child("categorie").getValue(String.class)));
+
+
+                     */
+
+                    annoncelist.add(Annonce);
+                       /*annoncelist.add(new annonce(Annonce.getDescription(),Annonce.getAdresse(),
+                                Annonce.getSuperficie(),Annonce.getPrix(),Annonce.getAmeublement(),Annonce.getTitre(),
+                                Annonce.getDate(),Annonce.getLog(),Annonce.getAlt(),Annonce.getUri1(),
+                                Annonce.getUuri2(),Annonce.getUri3(),Annonce.getUri4(),Annonce.getAnnonceid(),Annonce.getCategoeie()));
+
+
+                        */
+
                 }
+                annadpter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+                //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -232,7 +239,7 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
 
  */
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new homeFragment())
+       /*getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new homeFragment())
                 .addSharedElement(imaannonce,"annTN1")
                 .addSharedElement(titleann,"titreTN")
                 .addSharedElement(descriptionann,"descriptionTN")
@@ -242,6 +249,9 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                 .commit()
         ;
 
+        */
+
+
         DetailsFragment fragmentD = new DetailsFragment();
 
         Bundle bundle = new Bundle();
@@ -249,7 +259,17 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
         fragmentD.setArguments(bundle);
 
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.home_espace, fragmentD)
+                .addToBackStack(null)
+                .commit();
+
         //startActivity(intent,optionsCompat.toBundle());
 
     }
+
+
+
+
 }
