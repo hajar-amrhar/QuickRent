@@ -99,13 +99,6 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                 annonce Annonce= snapshot.getValue(annonce.class);
 
-                    /*annoncelist.add(new annonce(snapshot.child("description").getValue(String.class),snapshot.child("adresse").getValue(String.class),
-                            snapshot.child("superficie").getValue(String.class),snapshot.child("prix").getValue(String.class),snapshot.child("ameublement").getValue(String.class),snapshot.child("titre").getValue(String.class),
-                            snapshot.child("date").getValue(String.class),snapshot.child("log").getValue(String.class),snapshot.child("alt").getValue(String.class),snapshot.child("uri1").getValue(String.class),
-                            snapshot.child("uri2").getValue(String.class),snapshot.child("uri3").getValue(String.class),snapshot.child("uri4").getValue(String.class),snapshot.child("annonceid").getValue(String.class),snapshot.child("categorie").getValue(String.class)));
-
-
-                     */
 
                     annoncelist.add(Annonce);
                        /*annoncelist.add(new annonce(Annonce.getDescription(),Annonce.getAdresse(),
@@ -132,20 +125,180 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
     private View.OnClickListener filterListener = new View.OnClickListener() {
         public void onClick(View v) {
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
+
 
             switch (v.getId()){
                 case R.id.chipApp:
+                    reference.addValueEventListener(new ValueEventListener(){
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            annoncelist.clear();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+                                if(Annonce.getPrix().equals("appartement")) {
+
+                                    annoncelist.add(Annonce);
+                       /*annoncelist.add(new annonce(Annonce.getDescription(),Annonce.getAdresse(),
+                                Annonce.getSuperficie(),Annonce.getPrix(),Annonce.getAmeublement(),Annonce.getTitre(),
+                                Annonce.getDate(),Annonce.getLog(),Annonce.getAlt(),Annonce.getUri1(),
+                                Annonce.getUuri2(),Annonce.getUri3(),Annonce.getUri4(),Annonce.getAnnonceid(),Annonce.getCategoeie()));
+
+
+
+                        */
+
+                                }
+                            }
+                            annadpter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                            //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
                     break;
                 case R.id.chipCham:
+                    reference.addValueEventListener(new ValueEventListener(){
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            annoncelist.clear();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+                                if(Annonce.getCategoeie().equals("chambre")) {
+
+
+                                    annoncelist.add(Annonce);
+                       /*annoncelist.add(new annonce(Annonce.getDescription(),Annonce.getAdresse(),
+                                Annonce.getSuperficie(),Annonce.getPrix(),Annonce.getAmeublement(),Annonce.getTitre(),
+                                Annonce.getDate(),Annonce.getLog(),Annonce.getAlt(),Annonce.getUri1(),
+                                Annonce.getUuri2(),Annonce.getUri3(),Annonce.getUri4(),Annonce.getAnnonceid(),Annonce.getCategoeie()));
+
+
+
+                        */
+
+                                }
+                            }
+                            annadpter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+
+                        }
+                    });
 
                     break;
                 case R.id.chipGarc:
+                    reference.addValueEventListener(new ValueEventListener(){
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            annoncelist.clear();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+                                if(Annonce.getCategoeie()=="garconiere") {
+
+                                    annoncelist.add(Annonce);
+
+
+                                }
+                            }
+                            annadpter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     break;
                 case R.id.chipDuplexe:
+
+                    reference.addValueEventListener(new ValueEventListener(){
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            annoncelist.clear();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+                                if(Annonce.getCategoeie().equals("duplexe")) {
+
+                                }
+                            }
+                            annadpter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                            //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
                     break;
                 case R.id.chipMaison:
+                    reference.addValueEventListener(new ValueEventListener(){
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            annoncelist.clear();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+                                if(Annonce.getCategoeie().equals("maison")) {
+
+                                    annoncelist.add(Annonce);
+
+                                }
+                            }
+                            annadpter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                            //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
                     break;
                 case R.id.chipLocCom:
+                    reference.addValueEventListener(new ValueEventListener(){
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            annoncelist.clear();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+                                if(Annonce.getCategoeie().equals("local com")) {
+
+                                    annoncelist.add(Annonce);
+                                }
+                            }
+                            annadpter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                            //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
                     break;
             }
         }
@@ -166,30 +319,84 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
 
 
-    /*
-    public void ShowPopup(View v){
-        PopupMenu popup = new PopupMenu (getActivity(),v);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.popup_menu);
-        popup.show();
-    }
-
-
-     */
 
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
+
         switch (item.getItemId()) {
+
             case R.id.option_1:
+
+                readAnnonce();
+
                 //tri par date
                // Toast.makeText(this, "tri par date", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.option_2:
+                reference.addValueEventListener(new ValueEventListener(){
+                    int p=Integer.parseInt(annoncelist.get(1).getPrix()), prix ;
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                       annoncelist.clear();
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            annonce Annonce= snapshot.getValue(annonce.class);
+
+
+
+                            if(Integer.parseInt(Annonce.getPrix())>p) {
+
+                                p=Integer.parseInt(Annonce.getPrix());
+                            }
+                        }
+
+
+                        String k= String.valueOf(p);
+                        triPlusElv(k);
+                        annadpter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
                 //tri par date
                // Toast.makeText(this, "tri par date", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.option_3:
+                reference.addValueEventListener(new ValueEventListener(){
+                    int p=Integer.parseInt(annoncelist.get(1).getPrix()), prix ;
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        annoncelist.clear();
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            annonce Annonce= snapshot.getValue(annonce.class);
+
+
+
+                            if(Integer.parseInt(Annonce.getPrix())<p) {
+
+                                p=Integer.parseInt(Annonce.getPrix());
+                            }
+                        }
+
+
+                        String k= String.valueOf(p);
+                        triPlusElv(k);
+                        annadpter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                        //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
                 //tri par date
                 //Toast.makeText(this, "tri par date", Toast.LENGTH_LONG).show();
                 return true;
@@ -203,23 +410,6 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                                    TextView titleann, TextView descriptionann,
                                    TextView adresseann, TextView dateann,
                                     TextView prixann) {
-
-
-        //creer bundle et envoyer l'objet annonce verd annonceDetals
-
-
-
-
-
-
-        /*
-        Intent intent = new Intent (getActivity(),DetailsFragment.class);
-        intent.putExtra("annonceObject",annoncelist.get(pos));
-
-         */
-
-        //shared animation setup
-
 
 /*
 
@@ -270,6 +460,37 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     }
 
 
+    public  void triPlusElv(String p){
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
+        reference.addValueEventListener(new ValueEventListener(){
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //annoncelist.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    annonce Annonce= snapshot.getValue(annonce.class);
+
+
+                    if (Annonce.getPrix().equals(p))
+
+                    {annoncelist.add(Annonce);
+
+
+                        }
+
+                }
+                annadpter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+                //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
 
 
 }

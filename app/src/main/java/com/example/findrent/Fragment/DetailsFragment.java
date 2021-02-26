@@ -10,15 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.findrent.MapAnn;
-import com.example.findrent.MapFragment;
 import com.example.findrent.R;
+import com.example.findrent.mapDet;
 import com.example.findrent.model.annonce;
 
 
@@ -102,7 +99,7 @@ public class DetailsFragment extends Fragment {
         public void onClick(View v) {
 
           //  PB.setVisibility(View.INVISIBLE);
-
+/*
             Bundle bundle = new Bundle();
             bundle.putString("keyAt",annonce.getAlt());
             bundle.putString("keyLog",annonce.getLog());
@@ -122,13 +119,15 @@ public class DetailsFragment extends Fragment {
 
 
 
-/*
-            Intent intent = new Intent(getActivity(), MapAnn.class);
-            intent.putExtra("annonceObject2",annonce);
+
+ */
+
+            Intent intent = new Intent(getActivity(), mapDet.class);
+          //  intent.putExtra("annonceObject2",annonce);
 
             startActivity(intent);
 
- */
+
         }
     };
 

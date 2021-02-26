@@ -24,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.findrent.Fragment.vosAnnoncesFragment;
 import com.example.findrent.model.annonce;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -45,7 +44,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 
 public class add extends AppCompatActivity {
 

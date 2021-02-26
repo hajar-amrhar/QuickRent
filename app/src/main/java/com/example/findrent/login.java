@@ -84,16 +84,16 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         regEml = findViewById(R.id.username);
         regPswrd = findViewById(R.id.password);
         forgPswrd = findViewById(R.id.forgotPswrd);
-        fb = findViewById(R.id.facebook);
+        //fb = findViewById(R.id.facebook);
         ggl = findViewById(R.id.google);
-        gml = findViewById(R.id.email);
+       // gml = findViewById(R.id.email);
 
         callSignUp.setOnClickListener(this);
         connect.setOnClickListener(this);
         forgPswrd.setOnClickListener(this);
-        fb.setOnClickListener(this);
+        //fb.setOnClickListener(this);
         ggl.setOnClickListener(this);
-        gml.setOnClickListener(this);
+        //gml.setOnClickListener(this);
 
     }
 
@@ -115,9 +115,8 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
                 startActivity(new Intent(this, forgotpassword.class));
                 break;
-            case R.id.facebook:
-                signin_fb();
-                break;
+
+
             case R.id.google:
                 signIn();
                 break;

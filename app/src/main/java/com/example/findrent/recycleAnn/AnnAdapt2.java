@@ -19,9 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class AnnAdapt2{ }
-
- /*extends RecyclerView.Adapter<AnnAdapt2.AnnonceViewHolder>{
+public class AnnAdapt2 extends RecyclerView.Adapter<AnnAdapt2.AnnonceViewHolder>{
 
 
     public List<annonce> mdata;
@@ -51,7 +49,7 @@ public class AnnAdapt2{ }
 
 
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        annonce annonce=mdata.get(1);
+        annonce annonce=mdata.get(position);
 
         Glide.with(mContext).load(annonce.getUri1()).into(holder.imAnn);
 
@@ -79,7 +77,7 @@ public class AnnAdapt2{ }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mdata.size();
     }
 
     public class AnnonceViewHolder extends RecyclerView.ViewHolder {
@@ -98,7 +96,7 @@ public class AnnAdapt2{ }
 
             adresse=itemView.findViewById(R.id.adresseAnnonce);
 
-            ratingBar=itemView.findViewById(R.id.ratingBar);
+           // ratingBar=itemView.findViewById(R.id.ratingBar);
             imfav=itemView.findViewById(R.id.imageView2);
             prix=itemView.findViewById(R.id.prixAnnonce);
             date=itemView.findViewById(R.id.dateAnnonce);
@@ -108,4 +106,3 @@ public class AnnAdapt2{ }
 }
 
 
-  */

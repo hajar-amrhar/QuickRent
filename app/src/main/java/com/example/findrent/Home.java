@@ -14,6 +14,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.findrent.Fragment.VosFragment;
 import com.example.findrent.Fragment.addFragment;
 import com.example.findrent.Fragment.favFragment;
 import com.example.findrent.Fragment.filterFragment;
@@ -122,6 +123,10 @@ public class Home extends AppCompatActivity {
 
                         case R.id.nav_filter:
 
+                            Intent intent1 = new Intent(Home.this,Test.class);
+                            //  intent.putExtra("annonceObject2",annonce);
+
+                            startActivity(intent1);
                             // selectedFragment= new filterFragment();
                             break;
 
@@ -140,7 +145,7 @@ public class Home extends AppCompatActivity {
 
                         case R.id.nav_favorite:
 
-                            //selectedFragment= new favFragment();
+                            selectedFragment= new VosFragment();
 
 
 
@@ -151,10 +156,10 @@ public class Home extends AppCompatActivity {
                            /* SharedPreferences.Editor editor = getSharedPreferences("PREFS",MODE_PRIVATE).edit();
                             editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                             editor.apply();
-                            selectedFragment=new profileFragment();
-                            break;
 
-                            */
+                            break;*/
+
+                           selectedFragment=new profileFragment();
                 }
 
                 if (selectedFragment != null){
