@@ -10,7 +10,7 @@
     <item
         android:id="@+id/nav_filter"
         android:title=""
-        android:icon="@drawable/ic_filter"
+        android:icon="@drawable/placeholder_noir"
         />
     <item
         android:id="@+id/nav_add"
@@ -20,7 +20,7 @@
     <item
         android:id="@+id/nav_favorite"
         android:title=""
-        android:icon="@drawable/ic_favorite"
+        android:icon="@drawable/ic_men"
     />
     <item
         android:id="@+id/nav_profile"

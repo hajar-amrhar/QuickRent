@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
                 android:layout_marginLeft="5dp"
-                android:text="prenon"
+                android:text="prénom"
                 android:textSize="10dp"
                 android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:text="ahmed"
+                android:text="nouveau prénom"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:shadowColor="@color/white"
-                android:text="alaoui"
+                android:text="nouveau nom"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:shadowColor="@color/white"
-                android:text="ahmed.aalaoui@gmail.com"
+                android:text="nouveau email"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
@@ -187,7 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="25dp"
-                android:text="0615815926"
+                android:text="nouveau numéro de telephone"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
@@ -214,7 +214,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="adresse"
+                android:text="password"
                 android:textSize="10dp"
                 android:textStyle="bold" />
 
@@ -223,7 +223,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:text="n15 hay aladarisa beni mellal"
+                android:text="nouveau mot de passe "
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 

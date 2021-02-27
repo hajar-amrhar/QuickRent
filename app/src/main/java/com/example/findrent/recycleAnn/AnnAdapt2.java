@@ -24,12 +24,15 @@ public class AnnAdapt2 extends RecyclerView.Adapter<AnnAdapt2.AnnonceViewHolder>
 
     public List<annonce> mdata;
     public Context mContext;
+    annonceCallback callback;
+
 
     private FirebaseUser firebaseUser;
 
-    public AnnAdapt2(List<annonce> mdata, Context mContext) {
+    public AnnAdapt2(List<annonce> mdata, Context mContext,annonceCallback callback) {
         this.mdata = mdata;
         this.mContext = mContext;
+        this.callback = callback;
 
     }
 
@@ -100,6 +103,21 @@ public class AnnAdapt2 extends RecyclerView.Adapter<AnnAdapt2.AnnonceViewHolder>
             imfav=itemView.findViewById(R.id.imageView2);
             prix=itemView.findViewById(R.id.prixAnnonce);
             date=itemView.findViewById(R.id.dateAnnonce);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    callback.onAnnonceItemClick(getAdapterPosition(),imAnn,titre,
+                            desc,adresse,date,prix);
+
+
+
+                }
+
+
+            });
 
         }
     }

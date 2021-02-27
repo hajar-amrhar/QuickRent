@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.findrent.R;
 import com.example.findrent.model.annonce;
 import com.example.findrent.recycleAnn.AnnAdapt2;
+import com.example.findrent.recycleAnn.annonceCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VosFragment extends Fragment {
+public class VosFragment extends Fragment implements annonceCallback {
     private RecyclerView recyclerViewHome;
     private AnnAdapt2 annadpter;
     private List<annonce> annoncelist;
@@ -48,7 +51,7 @@ public class VosFragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerViewHome.setLayoutManager(linearLayoutManager);
         annoncelist = new ArrayList<>();
-        annadpter = new AnnAdapt2(annoncelist, getContext());
+        annadpter = new AnnAdapt2(annoncelist, getContext(),this);
         recyclerViewHome.setAdapter(annadpter);
         // Inflate the layout for this fragment
 
@@ -82,4 +85,29 @@ public class VosFragment extends Fragment {
 
         });
     }
+
+    @Override
+    public void onAnnonceItemClick(int pos, ImageView imaannonce, TextView titleann, TextView descriptionann, TextView adresseann, TextView dateann, TextView prixann) {
+
+
+        DetailsRmouveFragment fragmentD = new DetailsRmouveFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("annonceObject",annoncelist.get(pos));
+
+        fragmentD.setArguments(bundle);
+
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.home_espace, fragmentD)
+                .addToBackStack(null)
+                .commit();
+
+        //startActivity(intent,optionsCompat.toBundle());
+
+    }
+
+
+
+
 }

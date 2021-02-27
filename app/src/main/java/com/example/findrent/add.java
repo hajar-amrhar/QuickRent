@@ -147,6 +147,7 @@ public class add extends AppCompatActivity {
         Glide.with(add.this).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri3")).into(annonceImage3);
 
         Glide.with(add.this).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri4")).into(annonceImage4);
+
         // Glide.with(mContext).load(annonce.getUri1()).into(holder.annonceImage);
 
         // supprimer les uri de users-->currentUserId-->photoUri

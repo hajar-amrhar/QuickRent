@@ -30,8 +30,8 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
 
     DatabaseReference myRef=FirebaseDatabase.getInstance().getReference("users");
 
-    String nm,phn,eml,pswrd;
-    TextInputLayout regNm,regPhn,regPswrd,regEml;
+    String nm,phn,eml,pswrd,pswrd2;
+    TextInputLayout regNm,regPhn,regPswrd,regPswd2,regEml;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,8 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
         regPhn=findViewById(R.id.phone);
         regEml=findViewById(R.id.email);
         regPswrd=findViewById(R.id.password1);
+        regPswd2=findViewById(R.id.confirmpassword);
+
 
         create1=findViewById(R.id.createAcc);
         create1.setOnClickListener(this);
@@ -81,6 +83,8 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
         phn=regPhn.getEditText().getText().toString();
         eml=regEml.getEditText().getText().toString();
         pswrd=regPswrd.getEditText().getText().toString();
+        pswrd2=regPswd2.getEditText().getText().toString();
+
 
         if(nm.isEmpty()){
             regNm.setError("nom d'utilisateur incorrect");
@@ -115,6 +119,15 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
             regPswrd.requestFocus();
             return;
         }
+      /*  if(pswrd!=pswrd2){
+            regPswd2.setError("mot de passe incorrecte");
+            regPswd2.requestFocus();
+            return;
+        }
+        
+       */
+
+
 
 // -------------??
         //tester si l'utilisateur a dejà un compte avant s'euthentifier

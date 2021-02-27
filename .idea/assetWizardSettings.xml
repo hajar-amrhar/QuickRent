@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\HAJAR\AppData\Local\Temp\baseline_map_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\HAJAR\AppData\Local\Temp\baseline_menu_open_24.xml" />
                                                 <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
@@ -36,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/map/baseline_map_24.xml" />
+                                                <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/menu_open/baseline_menu_open_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -68,7 +68,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_map" />
+                                      <entry key="outputName" value="ic_men" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="03080b" />
                                     </map>

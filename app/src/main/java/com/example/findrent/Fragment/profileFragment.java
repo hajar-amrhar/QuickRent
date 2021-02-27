@@ -43,7 +43,7 @@ public class profileFragment extends Fragment {
 
         Button btnUpdate;
 
-        String USER_TABLE = "data";
+        String USER_TABLE = "users";
         DatabaseReference userDatabase;
 
 
@@ -69,8 +69,8 @@ public class profileFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         java.util.Map<String, Object> userChildUpdates = new HashMap<>();
-                        userChildUpdates.put("address", tvProfileAddress.getText().toString().trim());
-                        userChildUpdates.put("name", tvProfileFullName.getText().toString().trim());
+                        userChildUpdates.put("password1", tvProfileAddress.getText().toString().trim());
+                        userChildUpdates.put("username", tvProfileFullName.getText().toString().trim());
                         userChildUpdates.put("email", tvProfileEmail.getText().toString().trim());
                         userChildUpdates.put("phone", tvProfilePhone.getText().toString().trim());
 

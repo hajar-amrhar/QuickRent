@@ -11,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,8 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     private RecyclerView recyclerViewHome;
     private AnnonceAdapter annadpter;
     private List<annonce> annoncelist;
+    Spinner spinner;
+    TextView textView;
 
 
 
@@ -53,6 +58,14 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
 
       // recyclerViewHome=getActivity().findViewById(R.id.recycler_view_home);
+
+        spinner=v.findViewById(R.id.spinner);
+        //textView=v.findViewById(R.id.textR);
+
+
+        listSpiner();
+
+
 
         recyclerViewHome=v.findViewById(R.id.recycler_view_home);
         recyclerViewHome.setHasFixedSize(true);
@@ -89,6 +102,70 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
     }
 
+    private void listSpiner() {
+
+        ArrayList<String> titres =new ArrayList<>();
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
+        reference.addValueEventListener(new ValueEventListener(){
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    annonce Annonce= snapshot.getValue(annonce.class);
+                    titres.add(Annonce.getTitre());
+                }
+                //annadpter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
+        spinner.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item,titres));
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+              if(position == 0){
+
+                  //Toa
+              }else {
+                  DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
+                  reference.addValueEventListener(new ValueEventListener(){
+
+                      @Override
+                      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                          annoncelist.clear();
+                          for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                              annonce Annonce= snapshot.getValue(annonce.class);
+
+                              if(Annonce.getTitre().equals(parent.getItemAtPosition(position).toString()))
+
+                              {annoncelist.add(Annonce);
+                              }
+                          }
+                          annadpter.notifyDataSetChanged();
+                      }
+
+                      @Override
+                      public void onCancelled(@NonNull DatabaseError error) {
+                      }
+                  });
+              }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+
+
     private void readAnnonce(){
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
         reference.addValueEventListener(new ValueEventListener(){
@@ -101,13 +178,7 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
 
                     annoncelist.add(Annonce);
-                       /*annoncelist.add(new annonce(Annonce.getDescription(),Annonce.getAdresse(),
-                                Annonce.getSuperficie(),Annonce.getPrix(),Annonce.getAmeublement(),Annonce.getTitre(),
-                                Annonce.getDate(),Annonce.getLog(),Annonce.getAlt(),Annonce.getUri1(),
-                                Annonce.getUuri2(),Annonce.getUri3(),Annonce.getUri4(),Annonce.getAnnonceid(),Annonce.getCategoeie()));
 
-
-                        */
 
                 }
                 annadpter.notifyDataSetChanged();

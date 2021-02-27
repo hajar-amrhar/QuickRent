@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.findrent.R;
+import com.example.findrent.model.annonce;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -37,11 +38,10 @@ public class mapFragment extends Fragment {
 
                 // annonce item = (annonce) getIntent().getExtras().getSerializable("annonceObject");
 
-                // LatLng locAnnonce =new LatLng( Double.parseDouble(item.getAlt()), Double.parseDouble(item.getLog()));
+                 LatLng locAnnonce =new LatLng( Double.parseDouble(getArguments().getString("keyAt")), Double.parseDouble(getArguments().getString("keyLog")));
 
-                //map.addMarker(new MarkerOptions().position(locAnnonce).title(item.getTitre()));
-                LatLng locAnnonce =new LatLng( 22.876587587587,22.67790);
-                map.addMarker(new MarkerOptions().position(locAnnonce).title("kugtkutgku"));
+                map.addMarker(new MarkerOptions().position(locAnnonce).title(getArguments().getString("keyAt")));
+
 
 
                 map.moveCamera(CameraUpdateFactory.newLatLng(locAnnonce));

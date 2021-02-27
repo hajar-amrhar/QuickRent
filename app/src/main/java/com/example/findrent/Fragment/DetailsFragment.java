@@ -93,43 +93,31 @@ public class DetailsFragment extends Fragment {
 
     }
 
-
     private View.OnClickListener showMap = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+//            PB.setVisibility(View.INVISIBLE);
 
-          //  PB.setVisibility(View.INVISIBLE);
-/*
+
             Bundle bundle = new Bundle();
-            bundle.putString("keyAt",annonce.getAlt());
             bundle.putString("keyLog",annonce.getLog());
-            bundle.putString("keyTitle",annonce.getTitre());
+            bundle.putString("keyAt",annonce.getAlt());
+            bundle.putString("keyTitre",annonce.getTitre());
 
 
-
-
-
-            MapFragment fragobj = new MapFragment();
-           fragobj.setArguments(bundle);
+            mapFragment fragobj = new mapFragment();
+            fragobj.setArguments(bundle);
 
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.home_espace, fragobj)
                     .addToBackStack(null)
                     .commit();
 
-
-
-
- */
-
-            Intent intent = new Intent(getActivity(), mapDet.class);
-          //  intent.putExtra("annonceObject2",annonce);
-
-            startActivity(intent);
-
-
         }
     };
+
+
+
 
     private View.OnClickListener Contacter = new View.OnClickListener() {
         @Override
