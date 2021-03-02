@@ -46,7 +46,9 @@ public class Test extends AppCompatActivity implements OnMapReadyCallback {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     annonce item= snapshot.getValue(annonce.class);
 
-                    LatLng locAnnonce =new LatLng( Double.parseDouble(item.getAlt()), Double.parseDouble(item.getLog()));
+                   LatLng locAnnonce =new LatLng( Double.parseDouble(item.getAlt()), Double.parseDouble(item.getLog()));
+
+                   // LatLng locAnnonce =new LatLng( 32.865558, 30.7757);
 
                     map.addMarker(new MarkerOptions().position(locAnnonce).title(item.getTitre()));
                     map.moveCamera(CameraUpdateFactory.newLatLng(locAnnonce));

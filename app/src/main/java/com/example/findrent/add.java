@@ -47,13 +47,7 @@ import java.util.Calendar;
 
 public class add extends AppCompatActivity {
 
-
-    Fragment selectedFragment;
-    public Context mContext;
-
-
     FusedLocationProviderClient client;
-    // ...
     TextInputEditText titre, description,prix,superficie,adresse;
     Chip app, chambre, garc, duplexe, maison, loccom, meublé,nonmeublé;
     String titreS, descriptionS,dateS,prixS,superficieS,logS,altS,adressS,categoryS;
@@ -132,13 +126,7 @@ public class add extends AppCompatActivity {
         meublé.setOnClickListener(filterListener2);
         nonmeublé.setOnClickListener(filterListener2);
 
-
-
-
         //placer les image prises par la cam via realtimeDataBase dans addAnnonce
-
-
-
 
         Glide.with( add.this).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri1")).into(annonceImage);
 
@@ -148,15 +136,8 @@ public class add extends AppCompatActivity {
 
         Glide.with(add.this).load(FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").child("uri4")).into(annonceImage4);
 
-        // Glide.with(mContext).load(annonce.getUri1()).into(holder.annonceImage);
 
-        // supprimer les uri de users-->currentUserId-->photoUri
-
-
-
-                        readUri();
-
-
+       readUri();
 
     }
 
@@ -276,67 +257,45 @@ public class add extends AppCompatActivity {
 
 
             if(titreS.isEmpty()){
-                Toast.makeText(add.this, "champs obligatoir1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(add.this, "ajouter un titre", Toast.LENGTH_SHORT).show();
             }
             else if(ameublement.isEmpty()){
-                Toast.makeText(add.this, "champs obligatoir2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(add.this, "cochez l'ameublement", Toast.LENGTH_SHORT).show();
             }
             else if(descriptionS.isEmpty()){
-                Toast.makeText(add.this, "champs obligatoir3", Toast.LENGTH_SHORT).show();
+                Toast.makeText(add.this, "ajouter la description", Toast.LENGTH_SHORT).show();
             }
             else if(prixS.isEmpty()){
-                Toast.makeText(add.this, "champs obligatoir4", Toast.LENGTH_SHORT).show();
+                Toast.makeText(add.this, "ajouter le prix ", Toast.LENGTH_SHORT).show();
             }
             else if(categoryS==""){
-                Toast.makeText(add.this, "champs obligatoir5", Toast.LENGTH_SHORT).show();
+                Toast.makeText(add.this, "cochez la catégorie", Toast.LENGTH_SHORT).show();
+            }
+            else if(at==""||log==""){
+                Toast.makeText(add.this, "ajouter la localisation", Toast.LENGTH_SHORT).show();
             }
 
 
 
 
             else if(superficieS.isEmpty()){
-                Toast.makeText(add.this, "champs obligatoir6", Toast.LENGTH_SHORT).show();
+                Toast.makeText(add.this, "ajouter le superficie", Toast.LENGTH_SHORT).show();
             }
             else {
                 Calendar calendar = Calendar.getInstance();
                 String currentDate= DateFormat.getInstance().format(calendar.getTime());
 
-                // date.setText(currentDate);
-
-
-                // annonce Annonce =new annonce(descriptionS, adressS, superficieS, prixS, ameublement, titreS, currentDate, logS, altS, annonceImage, annoncImage2, annonceImage3, annonceImage4);
-
-
-
-
                 writeNewUser(descriptionS, adressS, superficieS, prixS, ameublement, titreS, currentDate, log, at,uri1,uri2,uri3,uri4,user.getUid(),categoryS);
 
 
-                // demarrer frag vos annonce
-
-                //tasks ???????
                 Toast.makeText(add.this, "ajout vc succ", Toast.LENGTH_SHORT).show();
-
                 // supprimer les uri de users-->currentUserId-->photoUri par passer null à setValue
-
                 FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("imageInst").setValue(null);
 
-
-
-
-                //selectedFragment= new vosAnnoncesFragment();
                 startActivity(new Intent(add.this, Home.class));
 
-
-
             }
-
-
-
-
         }
-
-
     };
 
 

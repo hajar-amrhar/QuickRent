@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener, annonceCallback {
@@ -278,7 +279,7 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                                 annonce Annonce= snapshot.getValue(annonce.class);
 
-                                if(Annonce.getCategoeie()=="garconiere") {
+                                if(Annonce.getCategoeie().equals("garconiere")) {
 
                                     annoncelist.add(Annonce);
 
@@ -314,7 +315,6 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 
-                            //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -365,9 +365,6 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
-                            //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
-
                         }
                     });
                     break;
@@ -402,31 +399,36 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
             case R.id.option_1:
 
                 readAnnonce();
-
                 //tri par date
-               // Toast.makeText(this, "tri par date", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.option_2:
                 reference.addValueEventListener(new ValueEventListener(){
-                    int p=Integer.parseInt(annoncelist.get(1).getPrix()), prix ;
+                    List<Double> liste = new ArrayList<>();
+                    int i=1;
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                        annoncelist.clear();
-
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                             annonce Annonce= snapshot.getValue(annonce.class);
 
+                            liste.add(Double.parseDouble(Annonce.getPrix()));
+                            Collections.sort(liste);
 
-
-                            if(Integer.parseInt(Annonce.getPrix())>p) {
-
-                                p=Integer.parseInt(Annonce.getPrix());
-                            }
                         }
 
+                        for(Double k: liste){
 
-                        String k= String.valueOf(p);
-                        triPlusElv(k);
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+
+                            if (Double. parseDouble(Annonce.getPrix())==k)
+                            { annoncelist.add(Annonce);
+                                Toast.makeText(getActivity(), "for if" , Toast.LENGTH_LONG).show();
+                                i++;
+                            }}
+                        }
+
                         annadpter.notifyDataSetChanged();
                     }
 
@@ -439,33 +441,37 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                 return true;
             case R.id.option_3:
                 reference.addValueEventListener(new ValueEventListener(){
-                    int p=Integer.parseInt(annoncelist.get(1).getPrix()), prix ;
+                    List<Double> liste1 = new ArrayList<>();
+                    int i=1;
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         annoncelist.clear();
-
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                             annonce Annonce= snapshot.getValue(annonce.class);
 
-
-
-                            if(Integer.parseInt(Annonce.getPrix())<p) {
-
-                                p=Integer.parseInt(Annonce.getPrix());
-                            }
+                            liste1.add(Double.parseDouble(Annonce.getPrix()));
+                            Collections.sort(liste1);
+                            Collections.reverse(liste1);
                         }
 
+                        for(Double k: liste1){
 
-                        String k= String.valueOf(p);
-                        triPlusElv(k);
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                annonce Annonce= snapshot.getValue(annonce.class);
+
+
+                                if (Double. parseDouble(Annonce.getPrix())==k)
+                                { annoncelist.add(Annonce);
+                                    Toast.makeText(getActivity(), "for if" , Toast.LENGTH_LONG).show();
+                                    i++;
+                                }}
+                        }
+
                         annadpter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
-                        //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
-
                     }
                 });
                 //tri par date
@@ -531,37 +537,6 @@ public class homeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     }
 
 
-    public  void triPlusElv(String p){
-
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("annonce");
-        reference.addValueEventListener(new ValueEventListener(){
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //annoncelist.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    annonce Annonce= snapshot.getValue(annonce.class);
-
-
-                    if (Annonce.getPrix().equals(p))
-
-                    {annoncelist.add(Annonce);
-
-
-                        }
-
-                }
-                annadpter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-                //Toast.makeText(getActivity(), "homfFragmentCancelled", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
 
 }

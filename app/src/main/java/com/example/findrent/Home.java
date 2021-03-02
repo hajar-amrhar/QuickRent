@@ -5,24 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.findrent.Fragment.VosFragment;
-import com.example.findrent.Fragment.addFragment;
-import com.example.findrent.Fragment.favFragment;
-import com.example.findrent.Fragment.filterFragment;
 import com.example.findrent.Fragment.homeFragment;
 import com.example.findrent.Fragment.profileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.chip.Chip;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
 

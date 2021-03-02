@@ -12,6 +12,7 @@
 
     <TextView
 
+        android:id="@+id/deconnection"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,33 +66,6 @@
             android:paddingRight="8dp" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="37dp"
-                android:layout_marginLeft="5dp"
-                android:text="prénom"
-                android:textSize="10dp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/tvProfileUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:text="nouveau prénom"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,12 +81,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="nom"
+                android:text="nom d'utilisateur"
                 android:textSize="10dp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/tvProfileFullName"
+                android:id="@+id/ProfileuserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -144,7 +118,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/tvProfileEmail"
+                android:id="@+id/ProfileEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -183,7 +157,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/tvProfilePhone"
+                android:id="@+id/ProfilePhone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="25dp"
@@ -219,7 +193,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/tvProfileAddress"
+                android:id="@+id/ProfilePassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -237,20 +211,18 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <Button
+
                 android:id="@+id/btnUpdate"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="-10dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/ciel"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/forme_recherche"
                 android:backgroundTint="@color/white"
+
 
                 android:gravity="center"
                 android:paddingLeft="10dp"
@@ -258,7 +230,6 @@
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 />
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

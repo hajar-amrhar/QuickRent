@@ -11,13 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.findrent.Availability;
 import com.example.findrent.FirebaseHandler;
 import com.example.findrent.R;
+import com.example.findrent.data;
+import com.example.findrent.model.annonce;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
@@ -26,43 +34,52 @@ import java.util.HashMap;
 public class profileFragment extends Fragment {
 
 
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseUser user = mAuth.getCurrentUser();
+    EditText ProfileEmail,ProfileuserName,ProfilePhone,ProfilePswrd;
+    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
+
+    Button btnUpdate;
+    TextView logout;
+
+    private data Data;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // inflater.inflate(R.layout.fragment_profile, container, false);
-        // return inflater.inflate(R.layout.fragment_profile, container, false);
+        ProfileEmail = v.findViewById(R.id.ProfileEmail);
+        ProfileuserName = v.findViewById(R.id.ProfileuserName);
+        ProfilePhone = v.findViewById(R.id.ProfilePhone);
+        ProfilePswrd = v.findViewById(R.id.ProfilePassword);
 
-        EditText tvProfileUserName;
-        EditText tvProfileEmail;
-        EditText tvProfileFullName;
-        EditText tvProfilePhone;
-        EditText tvProfileAddress;
-
-        Button btnUpdate;
-
-        String USER_TABLE = "users";
-        DatabaseReference userDatabase;
-
-
-        userDatabase = new FirebaseHandler().getFirebaseConnection(USER_TABLE);
-
-        tvProfileUserName = v.findViewById(R.id.tvProfileUserName);
-        tvProfileEmail = v.findViewById(R.id.tvProfileEmail);
-        tvProfileFullName = v.findViewById(R.id.tvProfileFullName);
-        tvProfilePhone = v.findViewById(R.id.tvProfilePhone);
-        tvProfileAddress = v.findViewById(R.id.tvProfileAddress);
         btnUpdate = v.findViewById(R.id.btnUpdate);
+        logout = v.findViewById(R.id.deconnection);
 
-/*        tvProfileUserName.setText(Availablity.currentdata.getUsername());
-        tvProfileEmail.setText(Availablity.currentdata.getEmail());
-        tvProfileFullName.setText(tvProfileFullName.getText());
-        tvProfilePhone.setText(Availablity.currentdata.getPhone());
-        tvProfileAddress.setText(tvProfileAddress.getText());*/
 
-        btnUpdate.setOnClickListener(new android.view.View.OnClickListener() {
+
+
+
+        reference.addValueEventListener(new ValueEventListener(){
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                     Data= dataSnapshot.getValue(data.class);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+       // showData();
+
+        btnUpdate.setOnClickListener(update);
+        logout.setOnClickListener(deconnection);
+
+
+
+     /*   btnUpdate.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
                 userDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -92,7 +109,73 @@ public class profileFragment extends Fragment {
 
 
 
+      */
+
         return v;
 
     }
+
+
+    public void showData(){
+        ProfileuserName.setText(Data.getUsername());
+        ProfileEmail.setText(Data.getEmail());
+        ProfilePhone.setText(Data.getPhone());
+        ProfilePswrd.setText(Data.getPassword1());
+    }
+
+    private View.OnClickListener update = new View.OnClickListener() {
+        public void onClick(View v) {
+        if(nameChanged() || pswrdChanged() || phnChange() || emlChanged())
+        {Toast.makeText(getActivity(),"mise à jour avec succès",Toast.LENGTH_LONG).show();
+
+        showData();}
+        showData();}
+
+    };
+
+    private boolean nameChanged() {
+        if (!Data.getUsername().equals(ProfileuserName.getText().toString().trim())) {
+            reference.child("username").setValue(ProfileuserName.getText().toString().trim());
+
+            return true;
+        } else
+
+            return false;
+    }
+
+    private boolean phnChange() {
+        if (!Data.getPhone().equals(ProfilePhone.getText().toString().trim())) {
+            reference.child("phone").setValue(ProfilePhone.getText().toString().trim());
+
+            return true;
+        } else
+
+            return false;    }
+
+    private boolean pswrdChanged() {
+        if (!Data.getPassword1().equals(ProfilePswrd.getText().toString().trim())) {
+            reference.child("password1").setValue(ProfilePswrd.getText().toString().trim());
+
+            return true;
+        } else
+
+            return false;    }
+
+    private boolean emlChanged() {
+
+        if (!Data.getEmail().equals(ProfileEmail.getText().toString().trim())) {
+            reference.child("email").setValue(ProfileEmail.getText().toString().trim());
+
+            return true;
+        } else
+
+            return false;    }
+
+
+    private View.OnClickListener deconnection = new View.OnClickListener() {
+        public void onClick(View v) {
+            mAuth.signOut();
+        }
+    };
+
 }
