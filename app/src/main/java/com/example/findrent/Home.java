@@ -49,13 +49,11 @@ public class Home extends AppCompatActivity {
                         case R.id.nav_filter:
 
                             Intent intent1 = new Intent(Home.this,Test.class);
-                            //  intent.putExtra("annonceObject2",annonce);
 
                             startActivity(intent1);
                             break;
 
                         case R.id.nav_add:
-                            //getSupportFragmentManager().beginTransaction().replace(R.id.home_espace,new addFragment()).commit();
                             Intent intent = new Intent(Home.this, CamGaler.class);
                             startActivity(intent);
                         break;
@@ -69,12 +67,6 @@ public class Home extends AppCompatActivity {
                             break;
 
                         case R.id.nav_profile:
-
-                           /* SharedPreferences.Editor editor = getSharedPreferences("PREFS",MODE_PRIVATE).edit();
-                            editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                            editor.apply();
-
-                            break;*/
 
                            selectedFragment=new profileFragment();
                 }

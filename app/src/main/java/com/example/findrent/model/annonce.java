@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 //ajouter annonce
 public class annonce implements Serializable {
-    // l'interface srialisable est pour envoyer les annonces vers une autre activité
-    private String description, adresse, superficie, prix, ameublement,categoeie, titre, date, log, alt, uri1, uuri2, uri3, uri4,annonceid;
 
+
+    private String description, adresse, superficie, prix, ameublement,categoeie, titre, date, log, alt, uri1, uuri2, uri3, uri4,annonceid;
 
     public annonce() {
     }

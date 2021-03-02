@@ -82,7 +82,7 @@ public class add extends AppCompatActivity {
 
         //date=v.findViewById(R.id.dateAnnonce2);
 
-        prix= findViewById(R.id.titreAnnonce2);
+        prix= findViewById(R.id.prixAnnonce2);
         superficie= findViewById(R.id.superficieAnnonce2);
         //log= v.findViewById(R.id.log);
         // alt= v.findViewById(R.id.at);
@@ -145,7 +145,6 @@ public class add extends AppCompatActivity {
     private void readUri() {
 
 
-       Toast.makeText(add.this, "read uri", Toast.LENGTH_SHORT).show();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("imageInst");
 
@@ -154,19 +153,12 @@ public class add extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //annoncelist.clear();
-                //for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    //uri Uri = snapshot.getValue(uri.class);
-                    //annoncelist.add(Annonce );
 
-
-                   // if (dataSnapshot.exists()){
                         uri1=dataSnapshot.child("uri1").getValue(String.class);
                         uri2=dataSnapshot.child("uri2").getValue(String.class);
                         uri3=dataSnapshot.child("uri3").getValue(String.class);
                         uri4=dataSnapshot.child("uri4").getValue(String.class);
 
-                        Toast.makeText(add.this, "read uri if ", Toast.LENGTH_SHORT).show();
 
                     //}
                 }
@@ -174,25 +166,17 @@ public class add extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
-
-                        Toast.makeText(add.this, "readUri failed", Toast.LENGTH_SHORT).show();
-
                     }
             });
     }
     public void writeNewUser(String description, String adresse, String superficie, String prix, String ameublement, String titre, String date, String log, String alt, String uri1, String uri2, String uri3, String uri4,String userid,String category) {
         annonce aAnnonce = new annonce(description,adresse, superficie, prix, ameublement, titre, date, log, alt, uri1,uri2,uri3,uri4,userid,category);
 
-        //mDatabase.child("Annonce").child(mDatabase.push().getKey()).setValue(annonce);
 
         FirebaseDatabase.getInstance().getReference("annonce").child(titreS).setValue(aAnnonce);
 
         FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("vos annonces").child(titreS).setValue(aAnnonce);
-
-
     }
-
-
 
     private View.OnClickListener filterListener = new View.OnClickListener() {
         public void onClick(View v) {
